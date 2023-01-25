@@ -8,11 +8,12 @@ const router = Router();
 router.get('/', isAuthenticated, handleGetAllFavs);
 
 // Get /api/favs/:id	->	A single list of favorites
+router.get('/:id', isAuthenticated);
 
 // Post /api/favs/ -> Creates a new list of favorites
+router.post('/', isAuthenticated);
 
 // Delete /api/favs/:id	-> Deletes a list of favorites
-
-// Post /auth/local/login	-> Login user by email/password
+router.delete('/:id', isAuthenticated);
 
 export default router;
