@@ -1,5 +1,6 @@
 import { Document, Schema, model } from "mongoose";
 import bcrypt from 'bcryptjs';
+import { UserProfileType } from "./user.types";
 
 export interface UserDocument extends Document {
   firstName: string;
@@ -11,6 +12,7 @@ export interface UserDocument extends Document {
   createdAt: Date;
   updateAt?: Date;
 
+  profile: UserProfileType;
   comparePassword: (password: string) => Promise<boolean>;
 };
 
