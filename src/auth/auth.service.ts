@@ -9,7 +9,7 @@ const SECRET = process.env.TOKEN_SECRET as string
 
 //sing_Token ->
 export function singToken(payload: any, options?: any) {
-  const token = jwt.sing(
+  const token = jwt.sign(
     payload,
     SECRET,
     options
