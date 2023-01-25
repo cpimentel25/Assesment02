@@ -1,4 +1,4 @@
-import { ObjectId, Schema, model } from "mongoose";
+import { Document, ObjectId, Schema, model } from "mongoose";
 
 export interface FavsDocument extends Document {
   name: string;
@@ -34,6 +34,6 @@ const FavsSchema = new Schema({
   }
 });
 
-const Favs = model('Favs', FavsSchema);
+const Favs = model<FavsDocument>('Favs', FavsSchema);
 
 export default Favs;

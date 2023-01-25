@@ -24,7 +24,7 @@ export async function handleLoginUser(req: Request, res: Response, next: NextFun
 
     return res.status(200).json({ profile: user.profile, token });
 
-  } catch (error) {
+  } catch (error: any) {
     return res.status(500).json(error.message);
   };
 };

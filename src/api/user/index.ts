@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { handleAllGetUsers } from "./user.controllet";
+import { handleAllGetUsers, handleCreateUsers } from "./user.controllet";
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.get('/', handleAllGetUsers);
 // router.get('/:id', handleGetUsers);
 
 // Post /api/users
-// router.post('/', handleCreateUsers);
+router.post('/', handleCreateUsers);
 
 // Patch /api/users/:id
 // router.patch('/:id', handleUpdateUsers);
