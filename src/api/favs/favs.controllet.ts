@@ -1,7 +1,7 @@
 import { NextFunction, Response, Request } from 'express';
 import * as dotenv from 'dotenv';
 import logger from '../../logger';
-import { createFavs, deleteFavs, getAllFavs, getFavs } from './favs.services';
+import { createFavs, deleteFavs, getAllFavs, getFavs, updateListsFavs } from './favs.services';
 
 dotenv.config();
 
@@ -30,6 +30,10 @@ export async function handleCreateFavs(req: Request, res: Response, next: NextFu
   const data = req.body;
   try {
     const favs = await createFavs(data);
+    const listsFavs = await updateListsFavs(data);
+
+    console.log(listsFavs);
+
     return res.status(200).json(favs);
   } catch (error) {
     logger.error('handleCreateFavs ~ error', error)
