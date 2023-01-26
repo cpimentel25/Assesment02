@@ -3,6 +3,8 @@ import { Document, ObjectId, Schema, model } from "mongoose";
 export interface ListsDocument extends Document {
   name: string;
   createdBy: ObjectId;
+  favs: string;
+
   createdAt: Date;
   updateAt?: Date;
 };
@@ -16,6 +18,9 @@ const ListsSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
+  },
+  favs: {
+    type: Array,
   }
 }, {
   timestamps: true,

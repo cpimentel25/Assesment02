@@ -1,7 +1,7 @@
 import { Document, ObjectId, Schema, model } from "mongoose";
 
 export interface FavsDocument extends Document {
-  name: string;
+  lists: string;
   title: string;
   description: string;
   link: string;
@@ -11,9 +11,9 @@ export interface FavsDocument extends Document {
 };
 
 const FavsSchema = new Schema({
-  name: {
+  lists: {
     type: String,
-    // required: true,
+    ref: 'Lists'
   },
   title: {
     type: String,
