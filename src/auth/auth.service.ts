@@ -32,19 +32,19 @@ export async function isAuthenticated(req: AuthRequest, res: Response, next: Nex
   const token = req.headers?.authorization?.split(' ')[1];
 
   if(!token) {
-    return res.status(401).json({ message: 'No autorizado' });
+    return res.status(401).json({ message: 'No autorizado (token)' });
   };
 
   const decode = verifyToken(token) as UserDocument;
 
   if (!decode) {
-    return res.status(401).json({ message: 'No autorizado' });
+    return res.status(401).json({ message: 'No autorizado (decode)' });
   };
 
   const user = await getUser({ email: decode.email });
 
   if (!user) {
-    return res.status(401).json({ message: 'No autorizado' });
+    return res.status(401).json({ message: 'No autorizado (email)' });
   };
 
   req.user = user;

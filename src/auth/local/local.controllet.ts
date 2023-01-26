@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { getUser } from "../../api/user/user.services";
 import { singToken } from '../auth.service';
 
-export async function handleLoginUser(req: Request, res: Response, next: NextFunction) {
+export async function handleLoginUser(req: Request, res: Response) {
   const { email, password } = req.body;
 
   try {
