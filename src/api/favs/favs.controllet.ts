@@ -26,13 +26,19 @@ export async function handleGetFavs(req: Request, res: Response, next: NextFunct
   }
 };
 
-export async function handleCreateFavs(req: Request, res: Response, next: NextFunction) {
+export async function handleCreateFavs(req: any, res: Response, next: NextFunction) {
   const data = req.body;
-  try {
-    const favs = await createFavs(data);
-    const listsFavs = await updateListsFavs(data);
+  const user = req.user;
 
-    console.log(listsFavs);
+  try {
+    const listsFavs = await updateListsFavs(data, user);
+
+    if (!listsFavs) {
+      console.log('Working!')
+      return res.status(404).json({ message: 'List not found' })
+    }
+
+    const favs = await createFavs(data);
 
     return res.status(200).json(favs);
   } catch (error) {

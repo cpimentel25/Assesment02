@@ -13,15 +13,25 @@ export function getFavs(id: string) {
 };
 
 export function createFavs(
-  data: DocumentDefinition<Omit<FavsDocument, 'createdAt' | 'updateAt'>>
+  data: DocumentDefinition<Omit<FavsDocument, 'createdAt' | 'updateAt'>>,
 ) {
-  return Favs.create(data);;
+  return Favs.create(data);
 };
 
 export function updateListsFavs(
-  data: DocumentDefinition<Omit<FavsDocument, 'createdAt' | 'updateAt'>>
+  data: DocumentDefinition<Omit<FavsDocument, 'createdAt' | 'updateAt'>>,
+  user: any
 ) {
-  return Lists.findByIdAndUpdate(data.lists, { favs: data });
+  const query = {
+    _id: data.lists,
+    createdBy: user._id
+  };
+
+  const update = {
+    $push: { favs: data }
+  };
+
+  return Lists.findOneAndUpdate(query, update);
 };
 
 export function deleteFavs(id: string) {
