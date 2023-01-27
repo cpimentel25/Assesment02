@@ -1,14 +1,14 @@
 # Assesment Backend
 ![](https://img.shields.io/github/stars/cpimentel25/Assesment02.svg) ![](https://img.shields.io/github/forks/cpimentel25/Assesment02.svg) ![](https://img.shields.io/github/tag/cpimentel25/Assesment02.svg) ![](https://img.shields.io/github/release/cpimentel25/Assesment02.svg) ![](https://img.shields.io/github/issues/cpimentel25/Assesment02.svg)
 
-###HOW TO RUN?
+### HOW TO RUN?
 
 first step after download this repo, in your terminal:
 `$ npm install`
 
 if your prefer testing API using POSTMAN. Follow parameters depending what want consult.
 
-###USER
+### USER
 
 **Description**
 
@@ -40,7 +40,7 @@ Consult any user by your id:
 | /api/users/:id      | GET |  | Get one existing user |
 | /api/users     | POST | handleCreateUsers( )  | Create a new user | |
 
-###FAVS
+### FAVS
 > Important: If want consult favs, required registered before and then consult this favs.
 
 **Description**
@@ -66,6 +66,7 @@ Created new favs:
 	}
 
 Deleted favs by id:
+
 `endpoint: http://localhost:8080/api/favs/<favs_id>`
 
 **Routes**
@@ -78,7 +79,7 @@ Deleted favs by id:
 | /api/favs/:id     | DELETE | isAuthenticated( ) handleDeleteFavs( )  | Delete a favs by your id | |
 
 
-###LSITS
+### LSITS
 > Important: If want consult favs, required registered before and then consult this favs.
 
 **Description**
@@ -108,7 +109,7 @@ Created new lists:
 | /api/lists/:id      | GET | isAuthenticated( ) handleGetLists( ) | Get one existing lists |
 | /api/lists     | POST | isAuthenticated( ) handleCreateLists( )  | Create a new lists | |
 
-###FlowChart
+### FlowChart
 
 ```flow
 st=>start: Register
@@ -123,7 +124,15 @@ cond(yes)->op1->e
 cond(no)->op2->op1->e
 ```
 
-###Developer information
+```mermaid
+graph TD;
+    Register-->Login user;
+    Login user-->"List" is already created?;
+    "List" is already created?-->Create new "Favs"-->Succes;
+    "List" is already created?-->Create new "Lists-->Create new "Favs"-->Succes;
+```
+
+### Developer information
 
 LinkedIn [Camilo Pimentel][id/name]
 
