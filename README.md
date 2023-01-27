@@ -79,7 +79,7 @@ Deleted favs by id:
 | /api/favs/:id     | DELETE | isAuthenticated( ) handleDeleteFavs( )  | Delete a favs by your id | |
 
 
-### LSITS
+### LISTS
 > Important: If want consult favs, required registered before and then consult this favs.
 
 **Description**
@@ -115,8 +115,8 @@ Created new lists:
 graph TD;
     Register-->Login_user;
     Login_user-->List_is_already_created?;
-    List_is_already_created?-->Create_new_Favs;
-    List_is_already_created?-->Create_new_Lists-->Create_new_Favs-->Succes;
+    List_is_already_created?-->Yes-->Create_new_Favs;
+    List_is_already_created?-->No-->Create_new_Lists-->Create_new_Favs-->Succes;
 ```
 
 ### gitGraph
