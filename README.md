@@ -35,7 +35,7 @@ Consult any user by your id:
 **Routes**
 
 | Route  | HTTP Verb  | Middleware | Description |
-| :------------ |:---------------| :-----| |
+| ------------ | --------------- |  --------------- | --------------- |
 | /api/users/      | GET | handleAllGetUsers( )  | Get all list of existing users |
 | /api/users/:id      | GET |  | Get one existing user |
 | /api/users     | POST | handleCreateUsers( )  | Create a new user | |
@@ -72,7 +72,7 @@ Deleted favs by id:
 **Routes**
 
 | Route  | HTTP Verb  | Middleware | Description |
-| :------------ |:---------------| :-----| |
+| ------------ | --------------- | ------------ | ------------ |
 | /api/favs/     | GET | isAuthenticated( ) handleGetAllFavs( )  | Get all list of existing favs |
 | /api/favs/:id      | GET | isAuthenticated( ) handleGetFavs( ) | Get one existing favs |
 | /api/favs     | POST | isAuthenticated( ) handleCreateFavs( )  | Create a new favs |
@@ -104,32 +104,34 @@ Created new lists:
 **Routes**
 
 | Route  | HTTP Verb  | Middleware | Description |
-| :------------ |:---------------| :-----| |
+| ------------ |--------------- | ------------ | ------------ |
 | /api/lists/      | GET | isAuthenticated( ) handleAllGetLists( )  | Get all list of existing lists |
 | /api/lists/:id      | GET | isAuthenticated( ) handleGetLists( ) | Get one existing lists |
 | /api/lists     | POST | isAuthenticated( ) handleCreateLists( )  | Create a new lists | |
 
 ### FlowChart
 
-```flow
-st=>start: Register
-op=>operation: Login user
-cond=>condition: "List" is already created?
-op1=>operation: Create new "Favs"
-op2=>operation: Create new "Lists
-e=>end: Succes
-
-st->op->cond
-cond(yes)->op1->e
-cond(no)->op2->op1->e
-```
-
 ```mermaid
 graph TD;
-    Register-->Login user;
-    Login user-->"List" is already created?;
-    "List" is already created?-->Create new "Favs"-->Succes;
-    "List" is already created?-->Create new "Lists-->Create new "Favs"-->Succes;
+    Register-->Login_user;
+    Login_user-->List_is_already_created?;
+    List_is_already_created?-->Create_new_Favs;
+    List_is_already_created?-->Create_new_Lists-->Create_new_Favs-->Succes;
+```
+
+### gitGraph
+
+```mermaid
+	gitGraph
+		commit
+		commit
+		branch develop
+		commit
+		commit
+		commit
+		checkout main
+		commit
+		commit
 ```
 
 ### Developer information
